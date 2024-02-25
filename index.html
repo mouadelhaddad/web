@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Generation</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+</head>
+<body>
+    <header>
+        <h1>My File Generator</h1>
+        <nav>
+            <ul>
+                <li><a href="text_input.html">Text Input</a></li>
+                <li><a href="execution_updates.html">Execution Updates</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Generate New File</h2>
+        <form id="fileGenerationForm">
+            <label for="file1">Upload File 1:</label>
+            <input type="file" id="file1" name="file1" accept=".csv, .txt">
+            <label for="file2">Upload File 2:</label>
+            <input type="file" id="file2" name="file2" accept=".csv, .txt">
+            <label for="start-date">Start Date:</label>
+            <input type="date" id="start-date" name="start-date">
+            <label for="end-date">End Date:</label>
+            <input type="date" id="end-date" name="end-date">
+            <button type="submit">Generate File</button>
+        </form>
+    </main>
+    <footer>
+        <p>© 2024 My Company</p>
+    </footer>
+    <script src="script.js"></script> <!-- Link to your JavaScript file -->
+</body>
+</html>
