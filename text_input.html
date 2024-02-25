@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Second Page</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">My File Generator</a>
+            <ul>
+                <li><a href="text_input.html">Text Input</a></li>
+                <li><a href="execution_updates.html">Execution Updates</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <br><br>
+        <h2>Second Page</h2>
+        <form id="secondPageForm">
+            <label for="file">Upload File:</label>
+            <div class="drag-drop-area" id="file">
+                <p>Drag and drop your file here or click to select file</p>
+                <input type="file" name="file" accept=".csv, .txt" hidden>
+            </div>
+            <div class="two-columns">
+                <div>
+                    <label for="text1">Text Input 1:</label>
+                    <input type="text" id="text1" name="text1">
+                </div>
+                <div>
+                    <label for="text2">Text Input 2:</label>
+                    <input type="text" id="text2" name="text2">
+                </div>
+            </div>
+            <div>
+                <label for="end-date">End Date:</label>
+                <input type="date" id="end-date" name="end-date">
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </main>
+    <footer>
+        <p>© 2024 My Company</p>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('secondPageForm');
+            form.addEventListener('submit', handleFormSubmit);
+
+            // Add drag and drop functionality to file inputs
+            const dropAreas = document.querySelectorAll('.drag-drop-area');
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                dropAreas.forEach(dropArea => {
+                    dropArea.addEventListener(eventName, preventDefaults, false);
+                });
+            });
+
+            ['dragenter', 'dragover'].forEach(eventName => {
+                dropAreas.forEach(dropArea => {
+                    dropArea.addEventListener(eventName, highlight, false);
+                });
+            });
+
+            ['dragleave', 'drop'].forEach(eventName => {
+                dropAreas.forEach(dropArea => {
+                    dropArea.addEventListener(eventName, unhighlight, false);
+                });
+            });
+
+            dropAreas.forEach(dropArea => {
+                dropArea.addEventListener('drop', handleDrop, false);
+                dropArea.addEventListener('click', handleClick, false);
+            });
+        });
+
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        function highlight(e) {
+            this.classList.add('active');
+        }
+
+        function unhighlight(e) {
+            this.classList.remove('active');
+        }
+
+        function handleDrop(e) {
+            let dt = e.dataTransfer;
+            let files = dt.files;
+
+            let input = this.querySelector('input[type="file"]');
+            input.files = files;
+
+            // Display the file name
+            this.querySelector('p').textContent = files[0].name;
+        }
+
+        function handleClick(e) {
+            let input = this.querySelector('input[type="file"]');
+            input.click();
+
+            input.addEventListener('change', () => {
+                // Display the file name
+                this.querySelector('p').textContent = input.files[0].name;
+            });
+        }
+
+        function handleFormSubmit(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Get form data (file uploads, dates, etc.)
+            const file = document.getElementById('file').querySelector('input[type="file"]').files[0];
+            const text1 = document.getElementById('text1').value;
+            const text2 = document.getElementById('text2').value;
+            const endDate = document.getElementById('end-date').value;
+
+            // Perform file generation logic (you can implement this part)
+            // Example: Send data to the server via AJAX or process it locally
+
+            // Show success message or handle errors
+            console.log('File generation initiated!');
+        }
+    </script> <!-- Link to your JavaScript file -->
+</body>
+</html>
