@@ -20,9 +20,15 @@
         <h2>Generate New File</h2>
         <form id="fileGenerationForm">
             <label for="file1">Upload File 1:</label>
-            <input type="file" id="file1" name="file1" accept=".csv, .txt">
+            <div class="drag-drop-area" id="file1">
+                <p>Drag and drop your file here or click to select file</p>
+                <input type="file" name="file1" accept=".csv, .txt" hidden>
+            </div>
             <label for="file2">Upload File 2:</label>
-            <input type="file" id="file2" name="file2" accept=".csv, .txt">
+            <div class="drag-drop-area" id="file2">
+                <p>Drag and drop your file here or click to select file</p>
+                <input type="file" name="file2" accept=".csv, .txt" hidden>
+            </div>
             <label for="start-date">Start Date:</label>
             <input type="date" id="start-date" name="start-date">
             <label for="end-date">End Date:</label>
