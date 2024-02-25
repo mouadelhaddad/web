@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Second Page</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}"> <!-- Link to your CSS file -->
 </head>
 <body>
     <header>
         <nav>
-            <a href="index.html" class="logo">My File Generator</a>
+            <a href="{{ url_for('index') }}" class="logo">My File Generator</a>
             <ul>
-                <li><a href="text_input.html">Text Input</a></li>
-                <li><a href="execution_updates.html">Execution Updates</a></li>
+                <li><a href="{{ url_for('text_input') }}">Text Input</a></li>
+                <li><a href="{{ url_for('execution_updates') }}">Execution Updates</a></li>
             </ul>
         </nav>
     </header>
@@ -25,22 +25,24 @@
                 <p>Drag and drop your file here or click to select file</p>
                 <input type="file" name="file" accept=".csv, .txt" hidden>
             </div>
-            <div class="two-columns">
-                <div>
-                    <label for="text1">Text Input 1:</label>
-                    <input type="text" id="text1" name="text1">
-                </div>
-                <div>
-                    <label for="text2">Text Input 2:</label>
-                    <input type="text" id="text2" name="text2">
-                </div>
-            </div>
+            <label for="radio">Choose an option:</label>
             <div>
-                <label for="end-date">End Date:</label>
-                <input type="date" id="end-date" name="end-date">
+                <input type="radio" id="true" name="radio" value="true">
+                <label for="true">True</label>
+                <input type="radio" id="false" name="radio" value="false">
+                <label for="false">False</label>
             </div>
-            <button type="submit">Submit</button>
+            <br>
+            <button type="submit" onclick="showProgressBar()">Submit</button>
+            <br>
+            <br>
+            <div class="progress-bar" id="progressUpdates" style="display: none;">
+                <label for="progressBar">Progress:</label>
+                <progress id="progressBar" value="23" max="100"> 23% </progress>
+            </div>
         </form>
+        
+
     </main>
     <footer>
         <p>© 2024 My Company</p>
@@ -124,7 +126,15 @@
 
             // Show success message or handle errors
             console.log('File generation initiated!');
+
+            // Activate the progress section
+            const progressSection = document.getElementById('progressUpdates');
+            progressSection.style.display = 'block';
         }
-    </script> <!-- Link to your JavaScript file -->
+            function showProgressBar() {
+                document.getElementById('progressUpdates').style.display = 'block';
+            }
+        
+    </script>
 </body>
 </html>

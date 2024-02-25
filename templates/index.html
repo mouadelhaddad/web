@@ -4,16 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>File Generation</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}"> <!-- Link to your CSS file -->
 </head>
 <body>
     <header>
         <nav>
-            <a href="#" class="logo">My File Generator</a>
+            <a href="{{ url_for('index') }}" class="logo">My File Generator</a>
             <ul>
-                <li><a href="text_input.html">Text Input</a></li>
-                <li><a href="execution_updates.html">Execution Updates</a></li>
-            </ul>
+                <li><a href="{{ url_for('text_input') }}">Text Input</a></li>
+                <li><a href="{{ url_for('execution_updates') }}">Execution Updates</a></li>
         </nav>
     </header>
     <main>
